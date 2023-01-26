@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { shallow } from 'zustand/shallow';
-import { usePostsStore } from '../store/usePostsStore';
+import usePostsStore from '../store/usePostsStore';
 
-export default function Posts({ data }) {
-  const [posts, setPosts] = usePostsStore(
-    (state) => [state.posts, state.setPosts],
+export default function Posts(props) {
+  const [posts, fetchPosts] = usePostsStore(
+    (state) => [state.posts, state.fetchPosts],
     shallow,
   );
 
-  useEffect(() => {
-    if (data) setPosts(data);
-  }, [data]);
+  React.useEffect(() => {
+    fetchPosts();
+  }, []);
 
   return (
     <div className="max-w-md mx-auto">
