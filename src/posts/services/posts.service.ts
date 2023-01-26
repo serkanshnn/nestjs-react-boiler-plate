@@ -1,4 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { BaseController } from 'src/core/base.controller';
+import { Ssr } from 'src/core/decorators/ssr.decorator';
 import { CreatePostDto } from '../dto/create-post.dto';
 import { UpdatePostDto } from '../dto/update-post.dto';
 
@@ -8,6 +10,7 @@ export class PostsService {
     return 'This action adds a new post';
   }
 
+  @Ssr()
   findAll() {
     return `This action returns all posts`;
   }

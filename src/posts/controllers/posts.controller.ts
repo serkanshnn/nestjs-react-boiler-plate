@@ -1,19 +1,38 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { PostsService } from '../services/posts.service';
 import { CreatePostDto } from '../dto/create-post.dto';
 import { UpdatePostDto } from '../dto/update-post.dto';
+import { BaseController } from 'src/core/base.controller';
+import { Ssr } from 'src/core/decorators/ssr.decorator';
 
 @Controller('posts')
-export class PostsController {
-  constructor(private readonly postsService: PostsService) {}
+export class PostsController extends BaseController {
+  constructor(readonly postsService: PostsService) {
+    super();
+  }
 
   @Post()
   create(@Body() createPostDto: CreatePostDto) {
     return this.postsService.create(createPostDto);
   }
 
+  @Ssr()
   @Get()
-  findAll() {
+  async findAll() {
+    const data = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const posts = await data.json();
+
+    return this.ok('Posts', {
+      data: posts,
+    });
     return this.postsService.findAll();
   }
 
