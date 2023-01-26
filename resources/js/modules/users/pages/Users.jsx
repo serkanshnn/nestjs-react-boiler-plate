@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 export default function Users(props) {
   return (
-    <div>{props.name}</div>
-  )
+    <div className='text-4xl'>{props.name}</div>
+  );
 }

@@ -10,6 +10,11 @@
         "watchAssets": true
       },
       {
+        "include": "../resources/css/*",
+        "outDir": "dist/public",
+        "watchAssets": true
+      },
+      {
         "include": "../resources/js/app.js",
         "outDir": "dist/public/assets",
         "watchAssets": true
