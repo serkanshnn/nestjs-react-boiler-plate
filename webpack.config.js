@@ -4,28 +4,23 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: ['./resources/js/app.tsx', './resources/css/app.css'],
+  entry: ['./src/resources/js/app.tsx', './src/resources/css/app.css'],
   target: 'node',
   module: {
     rules: [
       {
-        test: /.tsx?$/,
-        use: 'ts-loader',
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
+        use: ['babel-loader'],
       },
       {
-        test: /.jsx?$/,
-        use: 'babel-loader',
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-      },
-      {
-        test: /.js?$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
+        use: ['ts-loader'],
       },
       {
         test: /\.css$/i,
-        include: path.resolve(__dirname, 'resources'),
+        include: path.resolve(__dirname, './src/resources'),
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -43,10 +38,10 @@ module.exports = {
   ],
   mode: 'development',
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.css'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.css'],
   },
   output: {
-    path: path.join(__dirname, 'public'),
+    path: path.join(__dirname, './src/public'),
     filename: 'assets/js/bundle.js',
   },
 };
