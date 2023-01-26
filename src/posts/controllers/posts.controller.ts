@@ -27,14 +27,13 @@ export class PostsController extends BaseController {
   @Ssr()
   @Get()
   async findAll() {
-    return this.ok('Posts', {
-      data: [],
-    });
+    const result = this.postsService.findAll();
+    return this.ok('Posts', { data: result });
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.postsService.findOne(+id);
+  findOne(@Param('id') id: number) {
+    return this.postsService.findOne(id);
   }
 
   @Patch(':id')
