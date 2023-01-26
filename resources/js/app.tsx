@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-const files = require.context('./', true, /\.jsx$/i);
+const files = require.context('./', true, /\.tsx$/i);
 const fileObj = files.keys().reduce((acc, item) => {
   acc[item.split('/').pop().split('.')[0]] = files(item).default;
 
