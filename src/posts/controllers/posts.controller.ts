@@ -19,30 +19,30 @@ export class PostsController extends BaseController {
     super();
   }
 
-  @Post()
-  create(@Body() createPostDto: CreatePostDto) {
-    return this.postsService.create(createPostDto);
-  }
+  // @Post()
+  // create(@Body() createPostDto: CreatePostDto) {
+  //   return this.postsService.create(createPostDto);
+  // }
 
-  @Ssr()
-  @Get()
-  async findAll() {
-    const result = this.postsService.findAll();
-    return this.ok('Posts', { data: result });
-  }
+  // @Ssr()
+  // @Get()
+  // async findAll() {
+  //   const result = this.postsService.findAll();
+  //   return this.ok('Posts', { data: result });
+  // }
 
-  @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.postsService.findOne(id);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: number) {
+  //   return this.postsService.findOne(id);
+  // }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto) {
-    return this.postsService.update(+id, updatePostDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto) {
+  //   return this.postsService.update(+id, updatePostDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.postsService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.postsService.remove(+id);
+  // }
 }
