@@ -3,21 +3,24 @@ import { useGetUsersQuery } from '../../../features/users/usersApiSlice';
 import { User } from '../../../features/users/users.types';
 
 export default function Users() {
-  const { data, isLoading, error, refetch } = useGetUsersQuery(undefined, {
+  const { data, isLoading, error } = useGetUsersQuery(undefined, {
     // refetchOnMountOrArgChange: true
     // useEffect gibi çalışır. verilen argüman değişirse refetch yapar
   });
 
-  console.log({ data, isLoading, error });
-
   return (
-    <div className="text-4xl">
+    <div>
       {isLoading && <div>Loading...</div>}
-      {data && (
+      {!error && data && (
         <div>
-          {data.map((user: User) => (
-            <div key={user.id}>{user.name}</div>
-          ))}
+          <h1 className="mb-4 text-5xl text-center">Users</h1>
+          <div className="flex flex-wrap items-center justify-center max-w-lg gap-3 mx-auto">
+            {data.map((user: User) => (
+              <div key={user.id} className="p-2 rounded shadow-md bg-slate-200">
+                {user.name}
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

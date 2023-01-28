@@ -12,15 +12,16 @@ const fileObj = files.keys().reduce((acc, item) => {
 }, {});
 
 const element = document.getElementById('app');
+
 const component = element?.dataset?.component;
 const props = JSON.parse(element?.dataset?.props);
-const MyComponent = fileObj[component];
-const root = ReactDOM.createRoot(document.getElementById('app'));
 
-const app = (
+const MyComponent = fileObj[component];
+
+const root = ReactDOM.createRoot(element);
+
+root.render(
   <Provider store={store}>
     <MyComponent {...props} />
-  </Provider>
+  </Provider>,
 );
-
-root.render(app);
