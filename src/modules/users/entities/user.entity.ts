@@ -1,5 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from "typeorm";
-import { Post } from "../../posts/entities/post.entity";
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
@@ -14,7 +13,4 @@ export class User {
 
   @Column({ default: true })
   isActive: boolean;
-
-  @OneToMany(type => Post, post => post.user)
-  posts: Post[];
 }
