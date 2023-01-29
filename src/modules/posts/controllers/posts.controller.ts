@@ -1,15 +1,8 @@
 import {
   Controller,
   Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
 } from '@nestjs/common';
 import { PostsService } from '../services/posts.service';
-import { CreatePostDto } from '../dto/create-post.dto';
-import { UpdatePostDto } from '../dto/update-post.dto';
 import { BaseController } from 'src/core/base.controller';
 import { Ssr } from 'src/core/decorators/ssr.decorator';
 
@@ -24,12 +17,12 @@ export class PostsController extends BaseController {
   //   return this.postsService.create(createPostDto);
   // }
 
-  // @Ssr()
-  // @Get()
-  // async findAll() {
-  //   const result = this.postsService.findAll();
-  //   return this.ok('Posts', { data: result });
-  // }
+  @Ssr()
+  @Get()
+  async findAll() {
+    const result = this.postsService.findAll();
+    return this.ok('Posts', { data: result });
+  }
 
   // @Get(':id')
   // findOne(@Param('id') id: number) {

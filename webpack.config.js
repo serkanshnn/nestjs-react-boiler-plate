@@ -34,7 +34,7 @@ module.exports = {
   devtool: 'inline-source-map',
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/app.css',
+      filename: 'assets/css/app.css',
     }),
   ],
   mode: 'development',
@@ -42,7 +42,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js', '.jsx', '.css'],
   },
   output: {
-    path: path.join(__dirname, './src/public'),
+    path: path.join(__dirname, './public'),
     filename: 'assets/js/bundle.js',
   },
 };
