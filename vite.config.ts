@@ -10,7 +10,7 @@ export default defineConfig({
         entryFileNames: 'assets/js/[name].js',
         chunkFileNames: 'assets/js/[name].js',
         assetFileNames: 'assets/css/[name].[ext]',
-      }
+      },
     },
   },
 });
