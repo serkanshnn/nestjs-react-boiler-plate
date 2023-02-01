@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { State, Action } from '../types/store.types';
+import axios from 'axios';
 
 const usePostStore = create<State & Action>((set, get) => ({
   posts: [],
@@ -10,8 +11,8 @@ const usePostStore = create<State & Action>((set, get) => ({
     return set({ posts: sortedPosts });
   },
   fetchPosts: async () => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-    const posts = await res.json();
+    const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
+    const posts = res.data;
     return set({ posts });
   },
 }));
